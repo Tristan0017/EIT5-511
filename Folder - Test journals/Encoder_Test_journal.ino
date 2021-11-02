@@ -18,7 +18,6 @@ void loop() {
     currentState = digitalRead(reader);
     if (currentState == 1 && lastState == 0) {
       counter++;
-      //Serial.println(counter);
     }
     lastState = currentState;
   }
