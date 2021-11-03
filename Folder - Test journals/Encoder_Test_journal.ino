@@ -3,7 +3,7 @@ int currentState = 0;
 int lastState = 0;
 int reader = 8;
 int measureTime = 5; // Seconds
-float distancePrTick = 0.0042 ; //Meter 4090589255
+float distancePrTick = 0.004188842565 ; //Meter
 float velocity = 0; // Meter / seconds
 void setup() {
   Serial.begin(9600);
