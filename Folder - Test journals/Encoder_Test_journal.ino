@@ -3,14 +3,13 @@ int currentState = 0;
 int lastState = 0;
 int reader = 8;
 int measureTime = 5; // Seconds
-float distancePrTick = 0.004188842565 ; //Meter
+float distancePrCount = 0.004188842565 ; //Meter
 float velocity = 0; // Meter / seconds
 void setup() {
   Serial.begin(9600);
   pinMode(reader, INPUT);
   lastState = digitalRead(reader);
 }
-
 void loop() {
   Serial.println("start");
   unsigned long tid = millis();
@@ -21,7 +20,7 @@ void loop() {
     }
     lastState = currentState;
   }
-  velocity = distancePrTick * counter / measureTime;
+  velocity = distancePrCount * counter / measureTime;
   counter = 0;
   Serial.print("Hastighed: ");
   Serial.print(velocity);
