@@ -1,9 +1,9 @@
-int counter = 0;
+int Interrupts = 0;
 int currentState = 0;
 int lastState = 0;
 int reader = 8;
 int measureTime = 5; // Seconds
-float distancePrCount = 0.004188842565 ; //Meter
+float distancePrInterrupt = 0.004188842565 ; //Meter
 float velocity = 0; // Meter / seconds
 void setup() {
   Serial.begin(9600);
@@ -12,16 +12,16 @@ void setup() {
 }
 void loop() {
   Serial.println("start");
-  unsigned long tid = millis();
-  while (tid + (measureTime * 1000) > millis()) {
+  unsigned long Time = millis();
+  while (Time + (measureTime * 1000) > millis()) {
     currentState = digitalRead(reader);
     if (currentState == 1 && lastState == 0) {
-      counter++;
+      Interrupts++;
     }
     lastState = currentState;
   }
-  velocity = distancePrCount * counter / measureTime;
-  counter = 0;
+  velocity = distancePrInterrupt * Interrupts / measureTime;
+  Interrupts = 0;
   Serial.print("Hastighed: ");
   Serial.print(velocity);
   Serial.print(" m/s");
