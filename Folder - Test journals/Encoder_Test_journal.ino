@@ -3,7 +3,7 @@ int currentState = 0;
 int lastState = 0;
 int reader = 8;
 int measureTime = 5; // Seconds
-float distancePrInterrupt = 0.004188842565 ; //Meter
+//float distancePrInterrupt = 0.004188842565 ; //Meter
 float velocity = 0; // Meter / seconds
 void setup() {
   Serial.begin(9600);
@@ -20,12 +20,12 @@ void loop() {
     }
     lastState = currentState;
   }
-  velocity = distancePrInterrupt * Interrupts / measureTime;
+  velocity = 1.4472 * Interrupts / measureTime;
   Interrupts = 0;
   Serial.print("Hastighed: ");
   Serial.print(velocity);
   Serial.print(" m/s");
   Serial.print(" ; ");
-  Serial.print(velocity * 3600 / 1000);
+  Serial.print(velocity);
   Serial.println(" km/t");
 }
