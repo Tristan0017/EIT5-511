@@ -203,7 +203,7 @@ void MeasureDistanceCaclulateAngle() {
       }
       Encoder();
       Error = MeasDistance - ReferenceDistance;
-      PWMinput = MotorTransferFunction(Error / 100) * 41.07 + 61.6;
+      PWMinput = MotorTransferFunction(Error / 100) + 61.6;
       Drive(PWMinput);
       lastDebugMillis = millis();
       k_signal(sem1);
@@ -243,7 +243,7 @@ float MotorTransferFunction(float xn) {
 
   yn1 = yn;
 
-  return yn;
+  return yn * 41.07;
 }
 
 void Encoder() {
